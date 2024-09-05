@@ -12,11 +12,17 @@ public interface ProductosServ {
 	
 	public Productos buscar (Long idP);
 	
-	public void editar (Productos pokemon);
+	public void editar (Productos producto);
 	
 	public void eliminar (Long idP);
 	
 	public Productos buscarXNombre(String nombre);
+	
+	public Productos buscarXTipo(String tipo);
+	
+	public Productos buscarporNombre(String nombre);
+	
+	public void eliminarporNombre(String nombre);
 	
 
 }

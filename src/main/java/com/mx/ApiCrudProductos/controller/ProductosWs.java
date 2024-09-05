@@ -73,5 +73,36 @@ public class ProductosWs {
 	}
 	
 	
+	//Buscar por tipo///////////////////////////////////////////////////////////////////////////
+	// http://localhost:9000/ProductosWs/buscarTipo
+	@PostMapping(path = "buscarTipo")
+	public Productos buscarTipo(@RequestBody Productos producto) {
+		Productos productoEnco = imp.buscarXTipo(producto.getNombre());
+		return productoEnco;
+	}
+	
+	
+	
+	
+	//Buscar por nombre sin usar el resorte///////////////////////////////////////////////////
+	//http://localhost:9000/ProductosWs/buscarporNombre
+	@PostMapping(path = "buscarporNombre")
+	public Productos buscarporNombre(@RequestBody Productos producto) {
+		Productos productoEnco = imp.buscarXTipo(producto.getNombre());
+		return productoEnco;
+	}
+	
+	
+	
+	
+	
+	
+	//Eliminar por nombre sin usar el resorte/////////////////////////////////////////////////
+	//http://localhost:9000/ProductosWs/eliminarporNombre
+	@PostMapping(path = "eliminarporNombre")
+	public void eliminarporNombre (@RequestBody Productos producto) {
+		imp.eliminarporNombre(producto.getNombre());
+	}
+	
 
 }

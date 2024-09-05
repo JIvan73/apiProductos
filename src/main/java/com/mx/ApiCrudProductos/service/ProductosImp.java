@@ -1,5 +1,6 @@
 package com.mx.ApiCrudProductos.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,24 +64,64 @@ public class ProductosImp implements ProductosServ{
 		return dao.findByNombre(nombre);
 	}
 
-	
-	//@Transactional
-	//@Override
-	//public Productos buscarXTipo(String)
-	
-	// public  sdfghjs (String tipo)
-	///////trabajar sin resorte	
-	///List<Productos> producto = dao,findAll();
-	///List<Productos> registrosenc = newArraylist<>();
-	
-	////ciclo for(p:registros){
-	
-	//if(p.geNombre.equi(tipo)){
-	//nuevalista.add(p);
 
-	//}
+//////////////////////////////Buscar por Tipo sin usar resorte//////////////////////////////
+	@Transactional
+	@Override
+	public Productos buscarXTipo(String tipo) {
+		List<Productos> producto = dao.findAll();
+		List<Productos> registrosenc = new ArrayList<Productos>();
+		
+		boolean bandera = false;
 	
-	//}  finAll
-	//condicion
+		for(Productos p:producto) {
+			if(p.getTipo().equals(tipo)) {
+				registrosenc.add(p);
+				bandera = true;
+				break;
+			}
+		}
+		if(bandera==false) {
+			System.out.println("No se tiene ese registro");
+		}
+		return dao.findByNombre(tipo);
+		
+	}
+
+
+//////////////////////////////Buscar por nombre sin usar resorte//////////////////////////////
+	@Transactional
+	@Override
+	public Productos buscarporNombre(String nombre) {
+		List<Productos> producto = dao.findAll();
+		List<Productos> registrosenc = new ArrayList<Productos>();
+		
+		boolean bandera = false;
+	
+		for(Productos p:producto) {
+			if(p.getNombre().equals(nombre)) {
+				registrosenc.add(p);
+				bandera = true;
+				break;
+			}
+		}
+		if(bandera==false) {
+			System.out.println("No se tiene ese registro");
+		}
+		return dao.findByNombre(nombre);
+		
+	}
+
+//////////////////////////////Eliminar por nombre sin usar resorte//////////////////////////////
+	@Transactional
+	@Override
+	public void eliminarporNombre(String nombre) {
+		List<Productos> producto = dao.findAll();
+		dao.deleteAll(producto);
+		
+		
+	}
+	
+	
 	
 }
